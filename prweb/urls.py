@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from agenda import views
+from agenda.views import HomeViewTemplate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.viewTemplate)
+    path("", HomeViewTemplate.as_view())
 ]
