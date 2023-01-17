@@ -1,14 +1,14 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic import TemplateView
+from .models import Datos
 
 # Create your views here.
-
-# def viewTemplate(request):
-
-#     return render(request, '../templates/agenda.html')
-
 class HomeViewTemplate(TemplateView):
     template_name= 'agenda.html'
+    model = Datos
 
-    # def get(self, request):
-    #     return HttpResponse(self.template_view)
+def mostrarDatos(request):
+    listData = list(Datos.objects.values())
+    return JsonResponse(listData, safe=False)
+
+
